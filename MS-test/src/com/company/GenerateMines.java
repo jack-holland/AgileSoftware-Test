@@ -9,21 +9,23 @@ public class GenerateMines {
     private String[][] BoardWithMInes;
     private int MineNum;
     public List<int[]> cordlist;
-    GenerateMines(String[][] Board,int MineNum){
+    public int[] cord1stclick;
+    GenerateMines(String[][] Board,int MineNum, int[] cord1stclick){
         this.Originalboard = Board;
         this.MineNum =MineNum;
-        this.Operation();
 
+        this.cord1stclick = cord1stclick;
+        this.Operation();
     }
    public void SetMines(){
-        List<int[]> cordlist = new ArrayList<>();
+        ArrayList<int[]> cordlist = new ArrayList<>();
         Random rnd = new Random();
 
 
        while (cordlist.size()!=this.MineNum){
            int[] cord = new int[]{rnd.nextInt(this.Originalboard.length),rnd.nextInt(this.Originalboard[0].length)};
 
-           if (!cordlist.contains(cord)){
+           if (!find1(cordlist,cord)&&!find1(cordlist,this.cord1stclick)){
                cordlist.add(cord);
            }
 
@@ -102,6 +104,17 @@ public class GenerateMines {
 
         for (int i =0; i<this.cordlist.size();i++){
             if(this.cordlist.get(i)[0] == a[0]&&this.cordlist.get(i)[1]==a[1]){
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+    boolean find1(ArrayList<int[]> b,int[] a){
+
+        for (int i =0; i<b.size();i++){
+            if(b.get(i)[0] == a[0]&&b.get(i)[1]==a[1]){
                 return true;
             }
 

@@ -13,7 +13,8 @@ class GenerateMinesTest {
         GenerateBoard Borad = new GenerateBoard(9,9);
         String[][] a =Borad.getBoard();
         showpad(a);
-        GenerateMines minestest =new GenerateMines(a,10);
+        int[] firstclick = {3,4};
+        GenerateMines minestest =new GenerateMines(a,10,firstclick);
         minestest.SetMines();
         a = minestest.GetBoardWitheMines();
        // showpad(a);

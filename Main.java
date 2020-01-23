@@ -14,6 +14,7 @@ public class Sweeper
     private SaoLei sl;
     private Scanner sc;
     private int choose; // Game selection
+    private boolean flag = false; // Incomplete results sign
 
     // 8 directions up, down, left, right, top left, bottom left, top right, bottom right
     public static final int[][] move = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{1,-1},{-1,1},{1,1}};
@@ -123,3 +124,62 @@ public class Sweeper
             System.out.println();
         }
     }
+
+ // Game difficulty selection
+    public void start()
+    {
+        System.out.println("Please select difficulty:");
+        System.out.println("1.Elementary");
+        System.out.println("2.Intermediate");
+        System.out.println("3.High");
+        System.out.println("4.Customize");
+
+        choose = flag(1, 4);
+
+        // Create mines based on difficulty
+        switch (choose) 
+        {
+            case 1:
+                sl = new SaoLei(9, 9, 10);  // Elementary
+                break;
+            case 2:
+                sl = new SaoLei(16, 16, 40); // Intermediate
+                break;
+            case 3:
+                sl = new SaoLei(16, 30, 99); // High
+                break;
+            case 4:
+                int r,c,count,range; // Rows, columns, mines, mines range
+                System.out.print("Custom line (up to 24):");
+                r = flag(1,24);
+                System.out.print("Custom columns (up to 30):");
+                c = flag(1,30);
+                range = (int)(r*c*0.45);
+                System.out.print("Custom mines (max"+ range +");");
+                count = flag(1,range);
+                sl = new SaoLei(r, c, count);
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+public class SaoLei {
+    public int rows;        // Row
+    public int columns;     // Column
+    public int count;       // Landmines
+    public int[][] data;    // Store data information
+
+    public SaoLei(int rows, int columns, int count) {
+        this.rows = rows>24 ? 24 : rows;            // 24 rows max 
+        this.columns = columns>30 ? 30 : columns;   // 30 columns max
+        this.count = count;
+
+        // Mine laying
+//        run();
+
+        // Output
+//      printRes();
+    }
+}

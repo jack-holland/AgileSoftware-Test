@@ -3,10 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	GenerateBoard Board =new GenerateBoard(9,9);
-	GenerateMines BoardwithMines = new GenerateMines(Board.getBoard(),10, new int[]{3,4});
-	String[][] BoardWithoutBlock= BoardwithMines.GetBoardWitheMines();
-	showpad(BoardWithoutBlock);
+
     }
     static void print(String s) {
         System.out.print(s + "\t");

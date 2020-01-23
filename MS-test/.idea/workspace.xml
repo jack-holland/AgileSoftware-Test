@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9f61a56-d6d5-425e-b3e8-cc3e9251bf53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestDic/com/company/GenerateBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestDic/com/company/GenerateBoardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestDic/com/company/GenerateMinesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestDic/com/company/GenerateMinesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MS-test/META-INF/MS-test.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MS-test/com/company/GenerateMines.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MS-test/com/company/GenerateMines.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MS-test/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MS-test/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/MS-test/com/company/GenerateMinesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/MS-test/com/company/GenerateMinesTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/GenerateBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GenerateBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/GenerateMines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GenerateMines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../identity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/GenerateBoard.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -187,8 +180,17 @@
       <option name="presentableId" value="Default" />
       <updated>1579721093666</updated>
       <workItem from="1579721096687" duration="18320000" />
-      <workItem from="1579739488995" duration="799000" />
+      <workItem from="1579739488995" duration="5630000" />
+      <workItem from="1579817325070" duration="3113000" />
     </task>
+    <task id="LOCAL-00001" summary="Add function:&#10;do not set the mine at the position where the player first clicks.">
+      <created>1579740374553</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579740374553</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,10 +201,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add function:&#10;do not set the mine at the position where the player first clicks." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add function:&#10;do not set the mine at the position where the player first clicks." />
   </component>
 </project>

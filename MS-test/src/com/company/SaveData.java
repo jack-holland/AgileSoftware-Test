@@ -4,37 +4,45 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class GenerateMines {
-    private String[][] Originalboard;
-    private String[][] BoardWithMInes;
-    private int MineNum;
+class SaveData {
+    public int[][] Originalboard;
+    public int[][] BoardWithMInes;
+    public int count;
     public List<int[]> cordlist;
-    public int[] cord1stclick;
-    GenerateMines(String[][] Board,int MineNum, int[] cord1stclick){
-        this.Originalboard = Board;
-        this.MineNum =MineNum;
 
-        this.cord1stclick = cord1stclick;
+    public int rows;
+    public int columns;
+    public int[][] data;
+    SaveData(int rows, int columns, int count){
+
+        this.count =count;
+        this.rows = Math.min(rows,24);
+        this.columns = Math.min(columns,30);
+
+        //this.cord1stclick = cord1stclick;
         this.Operation();
     }
-   public void SetMines(){
+    public void SetMines(){
         ArrayList<int[]> cordlist = new ArrayList<>();
         Random rnd = new Random();
+        /*for (int i = 0;i<this.columns;i++){
+            this.BoardWithMInes[0][i+1] = i+1;
+            this.BoardWithMInes[i+1][0] = i+1;
+        }*/
+
+        while (cordlist.size()!=this.count){
+            int[] cord = new int[]{rnd.nextInt(this.Originalboard.length-1)+1,rnd.nextInt(this.Originalboard[0].length-1)+1};
+
+            if (!find1(cordlist,cord)){
+                cordlist.add(cord);
+            }
 
 
-       while (cordlist.size()!=this.MineNum){
-           int[] cord = new int[]{rnd.nextInt(this.Originalboard.length),rnd.nextInt(this.Originalboard[0].length)};
-
-           if (!find1(cordlist,cord)&&!find1(cordlist,this.cord1stclick)){
-               cordlist.add(cord);
-           }
-
-
-       }
+        }
         this.cordlist = cordlist;
         this.BoardWithMInes =this.Originalboard;
-        for(int i= 0;i<this.MineNum;i++){
-            this.BoardWithMInes[cordlist.get(i)[0]][cordlist.get(i)[1]] = "*";
+        for(int i= 0;i<this.count;i++){
+            this.BoardWithMInes[cordlist.get(i)[0]][cordlist.get(i)[1]] = -1;
         }
 
 
@@ -83,19 +91,26 @@ public class GenerateMines {
                     if (i + 1 < this.Originalboard.length && j + 1 < this.Originalboard[0].length && find(new int[]{i+1,j+1})) {
                         numbuffer++;
                     }
-                    this.BoardWithMInes[i][j] = Integer.toString(numbuffer);
+                    this.BoardWithMInes[i][j] = numbuffer;
 
                 }
+            }
+        }
+        for (int i = 1; i < BoardWithMInes.length; i++) {
+            for (int j = 1; j < BoardWithMInes[i].length; j++) {
+                BoardWithMInes[i][j] = BoardWithMInes[i][j]==0 ? -2 : BoardWithMInes[i][j];
             }
         }
     }
 
     void Operation(){
+        this.Originalboard = new int[this.rows+1][this.columns+1];
         this.SetMines();
         this.GenerateNumber();
+        this.data = this.BoardWithMInes;
     }
 
-    String[][] GetBoardWitheMines(){
+    int[][] GetBoardWitheMines(){
         return this.BoardWithMInes;
 
     }
@@ -122,4 +137,5 @@ public class GenerateMines {
 
         return false;
     }
+
 }

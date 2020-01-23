@@ -23,4 +23,16 @@ public class util{
 		}
         return false;
     }
+
+	public boolean numberEqualsMines(int i, int j){
+        int count = 0;
+        for (int k = 0; k < 8; k++) {
+            if(dfs_range(i, j, move[k][0], move[k][1])){
+                if(game[i+move[k][0]][j+move[k][1]]==-1)
+                    count++;
+            }
+        }
+
+        return count==game[i][j] ? true : false;
+    }
 }

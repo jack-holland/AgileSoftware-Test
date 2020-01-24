@@ -235,7 +235,7 @@ class Sweeper {
     }
 
 
-// Game difficulty selection
+    // Game difficulty selection
     public void start()
     {
         System.out.println("Please select difficulty:");
@@ -275,135 +275,135 @@ class Sweeper {
     }
 }
 
-    class entity {
-        public int[][] Originalboard;
-        public int[][] BoardWithMInes;
-        public int count;
-        public List<int[]> cordlist;
+class entity {
+    public int[][] Originalboard;
+    public int[][] BoardWithMInes;
+    public int count;
+    public List<int[]> cordlist;
 
-        public int rows;
-        public int columns;
-        public int[][] data;
+    public int rows;
+    public int columns;
+    public int[][] data;
 
-        entity(int rows, int columns, int count) {
+    entity(int rows, int columns, int count) {
 
-            this.count = count;
-            this.rows = Math.min(rows, 24);
-            this.columns = Math.min(columns, 30);
+        this.count = count;
+        this.rows = Math.min(rows, 24);
+        this.columns = Math.min(columns, 30);
 
-            //this.cord1stclick = cord1stclick;
-            this.Operation();
-        }
+        //this.cord1stclick = cord1stclick;
+        this.Operation();
+    }
 
-        public void SetMines() {
-            ArrayList<int[]> cordlist = new ArrayList<>();
-            Random rnd = new Random();
+    public void SetMines() {
+        ArrayList<int[]> cordlist = new ArrayList<>();
+        Random rnd = new Random();
         /*for (int i = 0;i<this.columns;i++){
             this.BoardWithMInes[0][i+1] = i+1;
             this.BoardWithMInes[i+1][0] = i+1;
         }*/
 
-            while (cordlist.size() != this.count) {
-                int[] cord = new int[]{rnd.nextInt(this.Originalboard.length - 1) + 1, rnd.nextInt(this.Originalboard[0].length - 1) + 1};
+        while (cordlist.size() != this.count) {
+            int[] cord = new int[]{rnd.nextInt(this.Originalboard.length - 1) + 1, rnd.nextInt(this.Originalboard[0].length - 1) + 1};
 
-                if (!find1(cordlist, cord)) {
-                    cordlist.add(cord);
-                }
-
-
+            if (!find1(cordlist, cord)) {
+                cordlist.add(cord);
             }
-            this.cordlist = cordlist;
-            this.BoardWithMInes = this.Originalboard;
-            for (int i = 0; i < this.count; i++) {
-                this.BoardWithMInes[cordlist.get(i)[0]][cordlist.get(i)[1]] = -1;
-            }
+
 
         }
+        this.cordlist = cordlist;
+        this.BoardWithMInes = this.Originalboard;
+        for (int i = 0; i < this.count; i++) {
+            this.BoardWithMInes[cordlist.get(i)[0]][cordlist.get(i)[1]] = -1;
+        }
 
-        void GenerateNumber() {
-            for (int i = 0; i < this.Originalboard.length; i++) {
-                for (int j = 0; j < this.Originalboard[0].length; j++) {
-                    int[] t = new int[]{i, j};
-                    int numbuffer = 0;
-                    if (find(new int[]{i, j}) == false) {
-                        if (i - 1 >= 0 && j - 1 >= 0 && find(new int[]{i - 1, j - 1})) {
+    }
 
-                            numbuffer++;
-                        }
-                        // top
-                        if (i - 1 >= 0 && find(new int[]{i - 1, j})) {
-                            numbuffer++;
-                        }
-                        // top right
-                        if (i - 1 >= 0 && j + 1 < this.Originalboard[0].length && find(new int[]{i - 1, j + 1})) {
-                            numbuffer++;
-                        }
-                        // left
-                        if (j - 1 >= 0 && find(new int[]{i, j - 1})) {
-                            numbuffer++;
-                        }
-                        // right
-                        if (j + 1 < this.Originalboard[0].length && find(new int[]{i, j + 1})) {
-                            numbuffer++;
-                        }
-                        // left down
-                        if (i + 1 < this.Originalboard.length && j - 1 >= 0 && find(new int[]{i + 1, j - 1})) {
-                            numbuffer++;
-                        }
-                        // down
-                        if (i + 1 < this.Originalboard.length && find(new int[]{i + 1, j})) {
-                            numbuffer++;
-                        }
-                        // right down
-                        if (i + 1 < this.Originalboard.length && j + 1 < this.Originalboard[0].length && find(new int[]{i + 1, j + 1})) {
-                            numbuffer++;
-                        }
-                        this.BoardWithMInes[i][j] = numbuffer;
+    void GenerateNumber() {
+        for (int i = 0; i < this.Originalboard.length; i++) {
+            for (int j = 0; j < this.Originalboard[0].length; j++) {
+                int[] t = new int[]{i, j};
+                int numbuffer = 0;
+                if (find(new int[]{i, j}) == false) {
+                    if (i - 1 >= 0 && j - 1 >= 0 && find(new int[]{i - 1, j - 1})) {
 
+                        numbuffer++;
                     }
-                }
-            }
-            for (int i = 1; i < BoardWithMInes.length; i++) {
-                for (int j = 1; j < BoardWithMInes[i].length; j++) {
-                    BoardWithMInes[i][j] = BoardWithMInes[i][j] == 0 ? -2 : BoardWithMInes[i][j];
+                    // top
+                    if (i - 1 >= 0 && find(new int[]{i - 1, j})) {
+                        numbuffer++;
+                    }
+                    // top right
+                    if (i - 1 >= 0 && j + 1 < this.Originalboard[0].length && find(new int[]{i - 1, j + 1})) {
+                        numbuffer++;
+                    }
+                    // left
+                    if (j - 1 >= 0 && find(new int[]{i, j - 1})) {
+                        numbuffer++;
+                    }
+                    // right
+                    if (j + 1 < this.Originalboard[0].length && find(new int[]{i, j + 1})) {
+                        numbuffer++;
+                    }
+                    // left down
+                    if (i + 1 < this.Originalboard.length && j - 1 >= 0 && find(new int[]{i + 1, j - 1})) {
+                        numbuffer++;
+                    }
+                    // down
+                    if (i + 1 < this.Originalboard.length && find(new int[]{i + 1, j})) {
+                        numbuffer++;
+                    }
+                    // right down
+                    if (i + 1 < this.Originalboard.length && j + 1 < this.Originalboard[0].length && find(new int[]{i + 1, j + 1})) {
+                        numbuffer++;
+                    }
+                    this.BoardWithMInes[i][j] = numbuffer;
+
                 }
             }
         }
-
-        void Operation() {
-            this.Originalboard = new int[this.rows + 1][this.columns + 1];
-            this.SetMines();
-            this.GenerateNumber();
-            this.data = this.BoardWithMInes;
-        }
-
-        int[][] GetBoardWitheMines() {
-            return this.BoardWithMInes;
-
-        }
-
-        boolean find(int[] a) {
-
-            for (int i = 0; i < this.cordlist.size(); i++) {
-                if (this.cordlist.get(i)[0] == a[0] && this.cordlist.get(i)[1] == a[1]) {
-                    return true;
-                }
-
+        for (int i = 1; i < BoardWithMInes.length; i++) {
+            for (int j = 1; j < BoardWithMInes[i].length; j++) {
+                BoardWithMInes[i][j] = BoardWithMInes[i][j] == 0 ? -2 : BoardWithMInes[i][j];
             }
-
-            return false;
-        }
-
-        public boolean find1(ArrayList<int[]> b, int[] a) {
-
-            for (int i = 0; i < b.size(); i++) {
-                if (b.get(i)[0] == a[0] && b.get(i)[1] == a[1]) {
-                    return true;
-                }
-
-            }
-
-            return false;
         }
     }
+
+    void Operation() {
+        this.Originalboard = new int[this.rows + 1][this.columns + 1];
+        this.SetMines();
+        this.GenerateNumber();
+        this.data = this.BoardWithMInes;
+    }
+
+    int[][] GetBoardWitheMines() {
+        return this.BoardWithMInes;
+
+    }
+
+    boolean find(int[] a) {
+
+        for (int i = 0; i < this.cordlist.size(); i++) {
+            if (this.cordlist.get(i)[0] == a[0] && this.cordlist.get(i)[1] == a[1]) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+    public boolean find1(ArrayList<int[]> b, int[] a) {
+
+        for (int i = 0; i < b.size(); i++) {
+            if (b.get(i)[0] == a[0] && b.get(i)[1] == a[1]) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+}
 

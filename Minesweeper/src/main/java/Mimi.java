@@ -68,7 +68,7 @@ class Sweeper
     public void print(int arr[][])
     {
         System.out.println();
-        System.out.println("\t Number of mines??o" + count() + "/" + sl.count);
+        System.out.println("\t Number of mines 0" + count() + "/" + sl.count);
         if(sl.columns>=10)
         {
             for (int i = 0; i < 2; i++)

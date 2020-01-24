@@ -83,7 +83,7 @@ class Sweeper {
             if(m==-1){
                 game[i][j]=m;
                 print(game);
-
+                continue;
             }
 
             // When the first step hits the mine, reposition

@@ -63,10 +63,60 @@ class Sweeper {
         return false;
     }
 
+    // Judge if the game has been won
+    public boolean judge(){
+        // Loop through the columns. Loop size is determined by game array length.
+        for (int column = 1; column < game.length; column++)
+        {
+            // Loop through the rows based on the column selected.
+            for (int row = 1; row < game[column].length; row++)
+            {
+                // If the data inside the array selected is a mine
+                if(sl.data[column][row] == -1)
+                {
+                    // Continue to the next if statement
+                    continue;
+                }
+                // If the system data array is different to the game array
+                // then it is a flag so the array should return false
+                if(game[column][row] != sl.data[column][row])
+                {
+                    // Function return false
+                    return false;
+                }
+            }
+        }
+
+        // If the code above is completed, set the pass variable to true
+        pass = true;
+
+        // If pass is true
+        if(pass)
+        {
+            // Loop through the columns and rows again
+            for (int column = 1; column < game.length; column++)
+            {
+                for (int row = 1; row < game[column].length; row++)
+                {
+                    // If game board is 0 it is unrevealed
+                    if(game[column][row] == 0)
+                    {
+                        // Set the array selected to -1 which is bomb
+                        game[column][row] = -1;
+
+                        // Set the bomb to a flag
+                        flag = true;
+                    }
+                }
+            }
+        }
+        // Function returned as true
+        return true;
+    }
 
 
     public void play(int i, int j, int m){
-        while(true /*judge function*/){
+        while(!judge()){
 
             if(!jump){
                 System.out.print("input row：");

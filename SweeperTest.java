@@ -1,5 +1,5 @@
 package com.company;
-
+//final
 import com.sun.tools.javac.Main;
 
 import static org.junit.Assert.*;

@@ -346,7 +346,7 @@ class entity {
     }
 
     public void SetMines() {
-        ArrayList<int[]> cordlist = new ArrayList<>();
+        ArrayList<int[]> cordlist = new ArrayList();
         Random rnd = new Random();
         /*for (int i = 0;i<this.columns;i++){
             this.BoardWithMInes[0][i+1] = i+1;
